@@ -7,4 +7,5 @@ phases:
       - mkdir -p ~/.ssh
       - echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
       - chmod 600 ~/.ssh/id_rsa
+      - ssh -vvv -o StrictHostKeyChecking=no -o ConnectTimeout=10 ubuntu@13.201.120.69 'echo connected'
       - ssh -o StrictHostKeyChecking=no ubuntu@13.201.120.69 'bash -s' < deploy.sh
