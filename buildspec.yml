@@ -3,5 +3,8 @@ version: 0.2
 phases:
   build:
     commands:
-      - echo "Starting deployment"
+      - echo "Deploying to EC2"
+      - mkdir -p ~/.ssh
+      - echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
+      - chmod 600 ~/.ssh/id_rsa
       - ssh -o StrictHostKeyChecking=no ubuntu@13.201.120.69 'bash -s' < deploy.sh
